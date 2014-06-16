@@ -6,7 +6,7 @@ depends:
   - gui
   - settings
   - mikutter-tab-hardpoint
-version: '1.0'
+version: '0.0.1'
 author: moguno
 name: mikutter-tab-label
 description: "タブにラベルを表示します。"
