@@ -42,7 +42,7 @@ Plugin.create(:mikutter_tab_label) {
 
   filter_tab_update_widget { |i_tab, widgets|
     msg = case i_tab.slug.to_s
-    when /^savedsearch/
+    when /^savedsearch_/
       if UserConfig[:tab_label_savedsearch]
         i_tab.name
       else
@@ -60,7 +60,7 @@ Plugin.create(:mikutter_tab_label) {
         end
       end
 
-    when /^list/
+    when /^list_[0-9]+$/
       if UserConfig[:tab_label_list]
         i_tab.name
       else
