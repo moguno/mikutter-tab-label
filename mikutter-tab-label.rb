@@ -62,7 +62,11 @@ Plugin.create(:mikutter_tab_label) {
 
     when /^list_[0-9]+$/
       if UserConfig[:tab_label_list]
-        i_tab.name
+        if i_tab.name
+          i_tab.name.sub(/^[^\/]+\//, "")
+        else
+          nil
+        end
       else
         nil
       end
@@ -73,11 +77,16 @@ Plugin.create(:mikutter_tab_label) {
     end
 
     if msg
+      msg2 = if msg.length > 10
+        msg[0..9] + "..."
+      else
+        msg
+      end
+
       #widgets[:center] << ::Gtk::Label.new(msg) 
-      a = ::Gtk::Label.new(msg)
+      a = ::Gtk::Label.new(msg2)
       a.angle = 270
       widgets[:center] << a
-
     end
 
     [i_tab, widgets]
